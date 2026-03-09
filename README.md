@@ -1,0 +1,1 @@
+# TrackMate\n\nTrackMate, kullanıcıların metin olarak girdiği günlük bütçe, zaman ve mekan tercihlerini yapay zeka (NLP) ile analiz edip, dış harita API'leri üzerinden aday mekanlar bulup; graf algoritmaları ile kişiselleştirilmiş, maliyet ve zaman açısından optimize günlük rotayı çizen akıllı planlama platformudur.
