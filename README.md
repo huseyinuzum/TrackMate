@@ -51,6 +51,3 @@ cd TrackMate
 # Geliştirme adımları ve çalıştırma detayları yakında eklenecektir.
 ```
 
-## 📝 Lisans
-
-Bu proje **MIT Lisansı** ile lisanslanmıştır.
