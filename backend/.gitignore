@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Sanal Ortam
+venv/
+.venv/
+env/
+.env/
+
+# Gizli Ortam Değişkenleri
+.env
+*.env
+
+# Veritabanı
+*.sqlite3
+*.db
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Alembic – sadece versions/ içindeki .py dosyaları tutulsun
+# alembic/versions/*.pyc zaten __pycache__ ile kapsanır
+
+# Loglar
+*.log
+logs/
+
+# Test çıktıları
+.pytest_cache/
+.coverage
+htmlcov/
