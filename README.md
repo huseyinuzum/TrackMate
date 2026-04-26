@@ -22,7 +22,8 @@
 Proje, 10 haftalık geliştirme sürecine uygun olarak yenilikçi teknolojilerle donatılmıştır:
 
 - **Backend:** Python, FastAPI
-- **Frontend:** React, Next.js, TailwindCSS
+- **Web Frontend:** React, Next.js, TailwindCSS
+- **Mobil App:** React Native (CLI)
 - **Veritabanı:** PostgreSQL, Prisma (veya SQLAlchemy)
 - **Yapay Zeka:** OpenAI API / LangChain (Niyet çıkarımı için)
 - **Harita/Konum API:** Google Maps Platform (Places API, Distance Matrix API) / Mapbox

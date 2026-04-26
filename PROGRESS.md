@@ -77,13 +77,23 @@ backend/
 
 ---
 
-## 🔜 Hafta 3 – NLP Modülü Geliştirmesi
+## ✅ Hafta 3 – NLP Modülü Geliştirmesi
 
-**Planlanan Kapsam:**
-- OpenAI API / LangChain entegrasyonu
-- Kullanıcı metninden zaman, bütçe, konum ve kategori çıkarımı (Prompt Engineering)
-- Yapılandırılmış JSON çıktısı (zaman, bütçe, lokasyon, kategoriler)
-- NLP endpoint'i: `POST /api/v1/nlp/parse`
+**Tamamlanma Tarihi:** Nisan 2026
+
+### Yapılan Çalışmalar
+
+| Modül | Durum | Teknoloji |
+|---|---|---|
+| OpenAI API Kurulumu | ✅ Tamamlandı | `openai` kütüphanesi, `gpt-4o-mini` modeli |
+| Prompt Engineering | ✅ Tamamlandı | Metinden zaman, bütçe, konum, kategori çıkarımı (JSON çıktı) |
+| NLP Servisi | ✅ Tamamlandı | Pydantic modelleri (`NLPParseRequest`, `NLPParseResponse`) |
+| API Endpoint'i | ✅ Tamamlandı | `POST /api/v1/nlp/parse` (Auth Korumalı) |
+
+### Oluşturulan Dosyalar
+- `backend/app/schemas/nlp.py`
+- `backend/app/services/nlp_service.py`
+- `backend/app/routers/nlp.py`
 
 ---
 
@@ -106,13 +116,13 @@ backend/
 
 ---
 
-## 🔜 Hafta 7-8 – Frontend Geliştirmesi
+## 🔜 Hafta 7-8 – Frontend & Mobil Geliştirmesi
 
 **Planlanan Kapsam:**
-- Next.js projesi kurulumu
-- Auth ekranları (Login / Register)
-- Metin giriş arayüzü ve harita bileşeni
-- Rota sonuç kartları
+- Web (Next.js) ve Mobil (React Native CLI) projelerinin kurulumu
+- Auth ekranları (Login / Register) her iki platform için
+- Metin giriş arayüzü ve harita bileşeni (react-native-maps / Google Maps JS)
+- Rota sonuç kartlarının UI tasarımı ve API entegrasyonu
 
 ---
 

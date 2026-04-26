@@ -10,3 +10,4 @@ python-dotenv>=1.0.0
 pydantic-settings>=2.5.0
 pydantic[email]>=2.9.0
 python-multipart>=0.0.9
+openai>=1.14.0
