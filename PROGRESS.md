@@ -97,12 +97,25 @@ backend/
 
 ---
 
-## 🔜 Hafta 4 – Harita API'leri ve Mekan Keşfi
+## ✅ Hafta 4 – Harita API'leri ve Mekan Keşfi
 
-**Planlanan Kapsam:**
-- Google Maps Places API entegrasyonu
-- NLP çıktısına göre mekan filtreleme servisi
-- `places` tablosuna veri kayıt sistemi (cache mekanizması)
+**Tamamlanma Tarihi:** Nisan 2026
+
+### Yapılan Çalışmalar
+
+| Modül | Durum | Teknoloji |
+|---|---|---|
+| Places Veritabanı Modeli | ✅ Tamamlandı | SQLAlchemy (UUID, Koordinatlar, Index) |
+| Google Maps API Entegrasyonu | ✅ Tamamlandı | `httpx` ile asenkron Text Search API isteği |
+| Mekan Cache Sistemi | ✅ Tamamlandı | Veritabanında kontrol, yoksa kaydetme (get_or_create) |
+| API Endpoint'i | ✅ Tamamlandı | `POST /api/v1/places/search` (Auth Korumalı) |
+
+### Oluşturulan Dosyalar
+- `backend/app/models/place.py`
+- `backend/app/schemas/place.py`
+- `backend/app/services/maps_service.py`
+- `backend/app/routers/places.py`
+
 
 ---
 

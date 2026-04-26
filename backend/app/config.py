@@ -18,6 +18,9 @@ class Settings(BaseSettings):
     # NLP Servisleri (OpenAI)
     openai_api_key: str | None = None
 
+    # Harita Servisleri (Google Maps)
+    google_maps_api_key: str | None = None
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

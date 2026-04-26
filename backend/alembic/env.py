@@ -14,6 +14,7 @@ from app.database import Base
 
 # Tüm modelleri metadata'ya dahil et
 from app.models import user  # noqa: F401
+from app.models import place  # noqa: F401
 
 config = context.config
 settings = get_settings()
