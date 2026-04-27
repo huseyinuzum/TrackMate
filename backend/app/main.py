@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
-from app.routers import auth, nlp, places
+from app.routers import auth, nlp, places, routes
 
 settings = get_settings()
 
@@ -27,6 +27,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(nlp.router)
 app.include_router(places.router)
+app.include_router(routes.router)
 
 
 @app.get("/", tags=["Health"])

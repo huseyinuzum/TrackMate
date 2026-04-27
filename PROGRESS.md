@@ -119,13 +119,26 @@ backend/
 
 ---
 
-## 🔜 Hafta 5-6 – Graf Algoritması ve Rota Optimizasyonu
+## ✅ Hafta 5-6 – Graf Algoritması ve Rota Optimizasyonu
 
-**Planlanan Kapsam:**
-- Distance Matrix API entegrasyonu
-- Graf modellemesi (networkx veya custom)
-- Dijkstra/VRP tabanlı rota oluşturucu
-- Zaman ve bütçe kısıtlayıcıları
+**Tamamlanma Tarihi:** Nisan 2026
+
+### Yapılan Çalışmalar
+
+| Modül | Durum | Teknoloji |
+|---|---|---|
+| Graf Kütüphanesi | ✅ Tamamlandı | `networkx` kütüphanesi eklendi |
+| Modeller ve Şemalar | ✅ Tamamlandı | `Route`, `RoutePlace` modelleri ve ilgili Pydantic şemaları |
+| Distance Matrix API | ✅ Tamamlandı | `httpx` üzerinden asenkron mesafe/süre hesaplama |
+| Rota Optimizasyonu | ✅ Tamamlandı | Ağırlıklı (Weighted) Yönlü Graf (DiGraph) ve Greedy (Açgözlü) algoritma |
+| API Endpoint'i | ✅ Tamamlandı | `POST /api/v1/routes/generate` eklendi |
+
+### Oluşturulan Dosyalar
+- `backend/app/models/route.py`
+- `backend/app/schemas/route.py`
+- `backend/app/services/route_optimizer.py`
+- `backend/app/routers/routes.py`
+- `backend/app/services/maps_service.py` (Güncellendi)
 
 ---
 

@@ -72,3 +72,26 @@ async def get_or_create_places_from_search(db: AsyncSession, search_results: lis
         
     await db.commit()
     return saved_places
+
+async def get_distance_matrix(origins: list[str], destinations: list[str], mode: str = "walking") -> dict:
+    """Belirtilen koordinatlar arası mesafe ve süre matrisini getirir."""
+    if not settings.google_maps_api_key:
+        raise HTTPException(status_code=500, detail="Google Maps API anahtarı eksik.")
+        
+    url = "https://maps.googleapis.com/maps/api/distancematrix/json"
+    params = {
+        "origins": "|".join(origins),
+        "destinations": "|".join(destinations),
+        "mode": mode,
+        "key": settings.google_maps_api_key,
+        "language": "tr"
+    }
+    
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, params=params)
+        data = response.json()
+        
+        if data.get("status") != "OK":
+            raise HTTPException(status_code=500, detail=f"Google Distance Matrix API hatası: {data.get('status')}")
+            
+        return data
