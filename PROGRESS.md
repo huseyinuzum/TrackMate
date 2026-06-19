@@ -142,13 +142,19 @@ backend/
 
 ---
 
-## 🔜 Hafta 7-8 – Frontend & Mobil Geliştirmesi
+## ✅ Hafta 7-8 – Frontend & Mobil Geliştirmesi
 
-**Planlanan Kapsam:**
-- Web (Next.js) ve Mobil (React Native CLI) projelerinin kurulumu
-- Auth ekranları (Login / Register) her iki platform için
-- Metin giriş arayüzü ve harita bileşeni (react-native-maps / Google Maps JS)
-- Rota sonuç kartlarının UI tasarımı ve API entegrasyonu
+**Tamamlanma Tarihi:** Haziran 2026
+
+### Yapılan Çalışmalar
+
+| Modül | Durum | Teknoloji |
+|---|---|---|
+| Web Projesi Kurulumu | ✅ Tamamlandı | Next.js (App Router), TypeScript, TailwindCSS |
+| Mobil Projesi Kurulumu | ✅ Tamamlandı | React Native (CLI), TypeScript |
+| Auth Ekranları | ✅ Tamamlandı | Login / Register formları (Her iki platformda JWT entegrasyonu) |
+| Arayüz & Harita Entegrasyonu | ✅ Tamamlandı | Leaflet.js + OpenStreetMap (OSM) interaktif haritası, Rota çizgileri, SVG pinler |
+| Rota Kartları & Zaman Çizelgesi | ✅ Tamamlandı | Adım adım seyahat rotası akışı ve yürüyüş süresi kartları |
 
 ---
 

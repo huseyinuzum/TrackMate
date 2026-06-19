@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark theme is default */
+  --bg-primary: #020617; /* slate-950 */
+  --bg-secondary: #0f172a; /* slate-900 */
+  --bg-tertiary: #1e293b; /* slate-800 */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8; /* slate-400 */
+  --border-color: #1e293b; /* slate-800 */
+}
+
+/* Light Theme overrides */
+[data-theme='light'] {
+  --bg-primary: #fdfbf7; /* krem/açık sarımsı */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3efe6;
+  --text-primary: #0f172a; /* siyah/koyu arduvaz */
+  --text-secondary: #475569; /* slate-600 */
+  --border-color: #e2e8f0; /* slate-200 */
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Soft transition utility for all elements that need it */
+.theme-transition {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}

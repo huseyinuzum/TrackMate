@@ -6,7 +6,7 @@ from app.database import get_db
 from app.models.user import User
 from app.services.auth_service import get_current_user
 from app.schemas.place import PlaceSearchRequest, PlaceResponse
-from app.services.maps_service import search_google_places, get_or_create_places_from_search
+from app.services.maps_service import search_places, get_or_create_places_from_search
 
 router = APIRouter(prefix="/api/v1/places", tags=["Places"])
 
@@ -17,12 +17,12 @@ async def search_and_save_places(
     current_user: User = Depends(get_current_user)
 ):
     """
-    Kullanıcının sorgusuna göre Google Places API'de arama yapar.
+    Kullanıcının sorgusuna göre Geoapify API'de arama yapar.
     Bulunan sonuçları TrackMate veritabanına kaydeder (veya varsa çeker) 
     ve standart formatta geri döndürür.
     """
-    # 1. Google'dan arama yap
-    results = await search_google_places(request.query, request.location)
+    # 1. Geoapify'dan arama yap
+    results = await search_places(request.query, request.location)
     
     if not results:
         return []

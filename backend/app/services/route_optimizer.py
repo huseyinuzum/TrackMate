@@ -20,7 +20,7 @@ async def generate_optimized_route(
     places = places[:10]
     coordinates = [f"{p.latitude},{p.longitude}" for p in places]
     
-    # 1. Google Distance Matrix API'den mekanlar arası süreleri al
+    # 1. Geoapify Route Matrix API'den mekanlar arası süreleri al
     matrix_data = await get_distance_matrix(origins=coordinates, destinations=coordinates, mode="walking")
     
     # 2. Yönlü Graf (DiGraph) Oluştur
@@ -28,13 +28,23 @@ async def generate_optimized_route(
     for i, place in enumerate(places):
         G.add_node(i, place=place, time=place.estimated_time_mins, cost=place.price_level or 0)
         
-    rows = matrix_data.get("rows", [])
-    for i, row in enumerate(rows):
-        elements = row.get("elements", [])
-        for j, element in enumerate(elements):
-            if i != j and element.get("status") == "OK":
-                travel_time_mins = element["duration"]["value"] // 60
-                G.add_edge(i, j, weight=travel_time_mins)
+    results = matrix_data.get("sources_to_targets", [])
+    for row in results:
+        if isinstance(row, list):
+            for item in row:
+                u = item.get("source_index")
+                v = item.get("target_index")
+                travel_time_secs = item.get("time")
+                if u is not None and v is not None and u != v and travel_time_secs is not None:
+                    travel_time_mins = travel_time_secs // 60
+                    G.add_edge(u, v, weight=travel_time_mins)
+        elif isinstance(row, dict):
+            u = row.get("source_index")
+            v = row.get("target_index")
+            travel_time_secs = row.get("time")
+            if u is not None and v is not None and u != v and travel_time_secs is not None:
+                travel_time_mins = travel_time_secs // 60
+                G.add_edge(u, v, weight=travel_time_mins)
                 
     # 3. Greedy Yaklaşımı (Açgözlü Algoritma) ile süre kısıtına uyan rota çıkarımı
     # Başlangıç noktasını rastgele/ilk eleman seçiyoruz
@@ -48,6 +58,16 @@ async def generate_optimized_route(
         best_next = None
         best_score = -1.0
         
+        def estimate_cost(price_level):
+            if not price_level: return 100
+            if price_level == 1: return 150
+            if price_level == 2: return 350
+            if price_level == 3: return 700
+            if price_level >= 4: return 1500
+            return 100
+            
+        current_total_cost = sum(estimate_cost(G.nodes[idx]['cost']) for idx in route_indices)
+        
         for neighbor in unvisited:
             if G.has_edge(current_node, neighbor):
                 travel_time = G[current_node][neighbor]['weight']
@@ -55,6 +75,11 @@ async def generate_optimized_route(
                 
                 # Toplam Süre Limitini (Kısıt) Geçmemeliyiz
                 if current_time + travel_time + visit_time <= max_duration_mins:
+                    # Bütçe kontrolü
+                    neighbor_cost = estimate_cost(G.nodes[neighbor]['cost'])
+                    if max_budget is not None and (current_total_cost + neighbor_cost) > max_budget:
+                        continue
+                        
                     # Değer Skoru = Rating / (Yolculuk Süresi + 1)
                     rating = float(G.nodes[neighbor]['place'].rating or 3.0)
                     score = rating / (travel_time + 1)

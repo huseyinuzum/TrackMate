@@ -15,11 +15,11 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
 
-    # NLP Servisleri (OpenAI)
-    openai_api_key: str | None = None
+    # NLP Servisleri (Gemini)
+    gemini_api_key: str | None = None
 
-    # Harita Servisleri (Google Maps)
-    google_maps_api_key: str | None = None
+    # Harita Servisleri (Geoapify)
+    geoapify_api_key: str | None = None
 
     class Config:
         env_file = ".env"

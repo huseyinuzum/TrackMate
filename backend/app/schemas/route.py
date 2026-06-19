@@ -6,7 +6,9 @@ from app.schemas.place import PlaceResponse
 
 class RouteGenerateRequest(BaseModel):
     query: str = Field(..., description="Mekan araması için kelime veya NLP sonucu metin")
-    location: str = Field(..., description="Hangi lokasyonda aranacak?")
+    location: Optional[str] = Field(None, description="Hangi lokasyonda aranacak?")
+    lat: Optional[float] = Field(None, description="Haritadan seçilen enlem")
+    lon: Optional[float] = Field(None, description="Haritadan seçilen boylam")
     max_duration_mins: int = Field(240, description="Kullanıcının rotaya ayırdığı toplam süre (dk)")
     max_budget: Optional[float] = Field(None, description="Maksimum bütçe kısıtlaması")
     categories: List[str] = Field(default_factory=list, description="Kategori filtreleri")
@@ -29,6 +31,8 @@ class RouteResponse(BaseModel):
     planned_date: date
     total_duration_mins: int
     total_cost_estimate: Optional[float]
+    user_prompt: Optional[str]
+    ai_response: Optional[str]
     places: List[RoutePlaceResponse]
 
     class Config:

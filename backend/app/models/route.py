@@ -14,6 +14,8 @@ class Route(Base):
     planned_date: Mapped[date] = mapped_column(Date, nullable=False, default=date.today)
     total_duration_mins: Mapped[int] = mapped_column(Integer, nullable=False)
     total_cost_estimate: Mapped[float | None] = mapped_column(Numeric(10, 2), nullable=True)
+    user_prompt: Mapped[str | None] = mapped_column(String, nullable=True)
+    ai_response: Mapped[str | None] = mapped_column(String, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
     # Relational link to route_places (order_by for correct sequencing)
